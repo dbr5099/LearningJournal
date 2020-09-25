@@ -7,20 +7,20 @@ DATABASE = SqliteDatabase('journal.db')
 
 class Entry(Model):
     journal_id = IntegerField(primary_key=True)
-    title = TextField(null=False)
+    title = TextField(max_length=200)
     timespent = IntegerField(null=False)
-    whatilearn = TextField(null=False)
-    resourcestoremember = TextField(null=False)
+    learned = TextField(null=False)
+    resources= TextField(null=False)
     date = DateField(default=datetime.datetime.now().strftime("%B %d, %Y"))
 
     class Meta:
         database = DATABASE
 
     @classmethod
-    def add(cls, title, timespent, whatilearn, resourcestoremember, date):
+    def add(cls, title, timespent, learned, resources, date):
         with DATABASE.transaction():
             cls.create(title=title, timespent=timespent,
-                       whatilearn=whatilearn, resourcestoremember=resourcestoremember, date=date)
+                       learned=learned, resources=resources, date=date)
 
 
 def initialize():
