@@ -7,7 +7,7 @@ DATABASE = SqliteDatabase('journal.db')
 
 class Entry(Model):
     journal_id = IntegerField(primary_key=True)
-    title = TextField(max_length=200)
+    title = TextField()
     timespent = IntegerField(null=False)
     learned = TextField(null=False)
     resources= TextField(null=False)

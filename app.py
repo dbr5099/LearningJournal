@@ -6,7 +6,6 @@ from flask_wtf.csrf import CSRFProtect
 
 csrf = CSRFProtect()
 
-Debug = True
 
 app = Flask(__name__)
 csrf.init_app(app)
@@ -86,4 +85,4 @@ def delete_entries(id):
 
 if __name__ == '__main__':
     models.initialize()
-    app.run(debug=DEBUG, host=HOST, port=PORT)
+    app.run(debug=True, host='127.0.0.1', port=5000)
